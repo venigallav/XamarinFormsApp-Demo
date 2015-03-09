@@ -8,6 +8,8 @@ namespace ProductBestBuy
 		public string salePrice { get; set; }
 		public string preowned { get; set; }
 		public string mobileUrl { get; set; }
+		public string largeImage { get; set; }
+		public string addToCartUrl { get; set; }
 		public override string ToString()
 		{
 			return "Item: " + "Name =" + name + ", " + "SalePrice =" + salePrice + ", " + "PreOwned =" + preowned + ", "
