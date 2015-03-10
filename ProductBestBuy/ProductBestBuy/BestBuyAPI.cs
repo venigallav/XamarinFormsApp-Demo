@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace ProductBestBuy
 {
-	public class BestBuyAPI
+//	public class BestBuyAPI
 	{
 		List<ProductView> ProductsView = new List<ProductView>();
 
@@ -39,6 +39,11 @@ namespace ProductBestBuy
 					preowned = "PreOwned : " + p.preowned, mobileUrl = p.url, largeImage = p.largeImage, addToCartUrl = p.addToCartUrl});
 			}
 			return ProductsView;
+		}
+
+		public int GetTotalPages(RootObject r)
+		{
+			return r.totalPages;
 		}
 	}
 }

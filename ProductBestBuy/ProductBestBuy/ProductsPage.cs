@@ -10,6 +10,7 @@ namespace ProductBestBuy
 		Button next = new Button ();
 		Button prev = new Button ();
 		ListView listView = new ListView ();
+		String uri;
 
 		void OnItemSelect (object sender, SelectedItemChangedEventArgs e)
 		{

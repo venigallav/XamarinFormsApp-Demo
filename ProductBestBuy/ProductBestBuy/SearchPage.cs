@@ -13,7 +13,7 @@ namespace ProductBestBuy
 		Entry e = new Entry ();
 		RootObject r = new RootObject();
 		BestBuyAPI o = new BestBuyAPI();
-		String Url = "";
+		String url = "";
 
 
 		public SearchPage ()
@@ -46,10 +46,10 @@ namespace ProductBestBuy
 
 		async void HandleBClick(object sender, EventArgs ea)
 		{
-			Debug.WriteLine ("HI");
-			Url = "http://api.remix.bestbuy.com/v1/products(name=" + e.Text + "*)?show=name,addToCartUrl,largeImage,salePrice,preowned,url&format=json&apiKey=API";
 
-			r = await o.GetData (Url);
+			url = "http://api.remix.bestbuy.com/v1/products(name=" + e.Text + "*)?show=name,addToCartUrl,largeImage,salePrice,preowned,url&page=1&format=json&apiKey=hxabspnkhtm9tsqnzmnn7mvz";
+
+			r = await o.GetData (url);
 			pl = o.ParseProducts (r);
 
 			await Navigation.PushAsync (new ProductsPage (pl));
