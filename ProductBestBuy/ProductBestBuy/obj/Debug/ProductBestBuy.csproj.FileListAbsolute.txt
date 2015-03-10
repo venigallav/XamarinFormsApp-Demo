@@ -17,3 +17,4 @@ C:\Users\Venkatesh\Documents\Projects\ProductBestBuy\ProductBestBuy\bin\Debug\Sy
 C:\Users\Venkatesh\Documents\Projects\ProductBestBuy\ProductBestBuy\bin\Debug\System.Net.Http.Primitives.xml
 C:\Users\Venkatesh\Documents\Projects\ProductBestBuy\ProductBestBuy\bin\Debug\ProductBestBuy.dll.config
 C:\Users\Venkatesh\Documents\Projects\ProductBestBuy\ProductBestBuy\obj\Debug\ProductBestBuy.csproj.App.config
+C:\Users\Venkatesh\Documents\Projects\ProductBestBuy\ProductBestBuy\obj\Debug\ProductOverview.xaml.g.cs

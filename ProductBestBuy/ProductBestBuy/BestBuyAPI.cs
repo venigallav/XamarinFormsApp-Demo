@@ -2,11 +2,14 @@
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Collections.Generic;
 
 namespace ProductBestBuy
 {
 	public class BestBuyAPI
 	{
+		List<ProductView> ProductsView = new List<ProductView>();
+
 		public async Task<String> GetJson(string Url)
 		{
 			try
@@ -26,6 +29,16 @@ namespace ProductBestBuy
 			String json = await GetJson (Url);
 			return JsonConvert.DeserializeObject<RootObject> (json.ToString ());
 
+		}
+
+		public List<ProductView> ParseProducts(RootObject r)
+		{
+			foreach(Product p in r.products)
+			{
+				ProductsView.Add (new ProductView {name="Name : "+p.name, salePrice = "SalePrice : "+p.salePrice,
+					preowned = "PreOwned : " + p.preowned, mobileUrl = p.url, largeImage = p.largeImage, addToCartUrl = p.addToCartUrl});
+			}
+			return ProductsView;
 		}
 	}
 }

@@ -2,6 +2,7 @@
 using ProductBestBuy;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ProductBestBuy
 {
@@ -15,7 +16,7 @@ namespace ProductBestBuy
 		String Url = "";
 
 
-		 public SearchPage ()
+		public SearchPage ()
 		{
 			e.Text = "Enter Item";
 			e.Focused += SearchFocused;
@@ -45,17 +46,11 @@ namespace ProductBestBuy
 
 		async void HandleBClick(object sender, EventArgs ea)
 		{
-
-			Url = "http://api.remix.bestbuy.com/v1/products(name=" + e.Text + "*)?show=name,salePrice,preowned,mobileUrl&format=json&apiKey=API";
+			Debug.WriteLine ("HI");
+			Url = "http://api.remix.bestbuy.com/v1/products(name=" + e.Text + "*)?show=name,addToCartUrl,largeImage,salePrice,preowned,url&format=json&apiKey=API";
 
 			r = await o.GetData (Url);
-			pl = new List<ProductView> ();
-
-			foreach(Product p in r.products)
-			{
-				pl.Add (new ProductView {name="Name : "+p.name, salePrice = "SalePrice : "+p.salePrice,
-					preowned = "PreOwned : " + p.preowned, mobileUrl = "URL : "+p.mobileUrl});
-			}
+			pl = o.ParseProducts (r);
 
 			await Navigation.PushAsync (new ProductsPage (pl));
 		}
@@ -63,5 +58,3 @@ namespace ProductBestBuy
 
 	}
 }
-
-
