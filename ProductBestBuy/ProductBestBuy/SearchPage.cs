@@ -10,14 +10,16 @@ namespace ProductBestBuy
 	{
 		public List<ProductView> pl;
 		Button b = new Button ();
-		Entry e = new Entry ();
+		public Entry e = new Entry ();
 		RootObject r = new RootObject();
 		BestBuyAPI o = new BestBuyAPI();
 		String url = "";
-
+		public static String searchItem = "";
+		public static int totalPages = 0;
 
 		public SearchPage ()
 		{
+
 			e.Text = "Enter Item";
 			e.Focused += SearchFocused;
 			e.TextColor = Color.Black;
@@ -40,18 +42,22 @@ namespace ProductBestBuy
 
 		void SearchFocused(object sender, EventArgs ea)
 		{
-			e.Text = "";
+			if (e.Text == "Enter Item") {
+				e.Text = "";
+			} else {
+				searchItem = e.Text;
+			}
 		}
 
 
 		async void HandleBClick(object sender, EventArgs ea)
 		{
-
-			url = "http://api.remix.bestbuy.com/v1/products(name=" + e.Text + "*)?show=name,addToCartUrl,largeImage,salePrice,preowned,url&page=1&format=json&apiKey=hxabspnkhtm9tsqnzmnn7mvz";
+			searchItem = e.Text;
+			url = "http://api.remix.bestbuy.com/v1/products(name=" + e.Text + "*)?show=name,addToCartUrl,largeImage,salePrice,preowned,url&page=1&format=json&apiKey=API";
 
 			r = await o.GetData (url);
 			pl = o.ParseProducts (r);
-
+			totalPages = o.GetTotalPages (r);
 			await Navigation.PushAsync (new ProductsPage (pl));
 		}
 

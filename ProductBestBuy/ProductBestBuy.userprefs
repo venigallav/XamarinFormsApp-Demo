@@ -1,16 +1,18 @@
 ﻿<Properties StartupItem="Droid\ProductBestBuy.Droid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ProductBestBuy\ProductsPage.cs">
     <Files>
       <File FileName="ProductBestBuy\SearchPage.cs" Line="1" Column="1" />
       <File FileName="ProductBestBuy\ProductsPage.cs" Line="4" Column="4" />
-      <File FileName="ProductBestBuy\BrowserPage.cs" Line="21" Column="21" />
-      <File FileName="ProductBestBuy\ProductOverview.xaml" Line="154" Column="154" />
-      <File FileName="ProductBestBuy\ProductOverview.cs" Line="4" Column="4" />
+      <File FileName="ProductBestBuy\BestBuyAPI.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Venkatesh\Documents\GitHub\XamarinFormsApp-Demo\ProductBestBuy\ProductBestBuy\SearchPage.cs" line="53" column="1" />
+      <Breakpoint file="C:\Users\Venkatesh\Documents\GitHub\XamarinFormsApp-Demo\ProductBestBuy\ProductBestBuy\ProductsPage.cs" line="28" column="1" />
+      <Breakpoint file="C:\Users\Venkatesh\Desktop\ProductBestBuy\ProductBestBuy\SearchPage.cs" line="55" column="24" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

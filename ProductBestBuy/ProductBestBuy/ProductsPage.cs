@@ -10,7 +10,9 @@ namespace ProductBestBuy
 		Button next = new Button ();
 		Button prev = new Button ();
 		ListView listView = new ListView ();
-		String uri;
+		BestBuyAPI o = new BestBuyAPI();
+		static int page = 1;
+		static int totalPages = 0;
 
 		void OnItemSelect (object sender, SelectedItemChangedEventArgs e)
 		{
@@ -21,9 +23,24 @@ namespace ProductBestBuy
 
 		}
 
-		void OnNextClick(object sender, EventArgs e)
+		async void OnNextClick(object sender, EventArgs e)
 		{
+			page += 1;
+			string uri = "http://api.remix.bestbuy.com/v1/products(name=" + SearchPage.searchItem + "*)?show=name,addToCartUrl,largeImage,salePrice,preowned,url&page="+page+"&format=json&apiKey=API";
+			RootObject r = await o.GetData (uri);
+			List<ProductView> pl = o.ParseProducts (r);
 
+			await Navigation.PushAsync (new ProductsPage (pl));
+		}
+
+		async void OnPrevClick(object sender, EventArgs e)
+		{
+			page -= 1;
+			string uri = "http://api.remix.bestbuy.com/v1/products(name=" + SearchPage.searchItem + "*)?show=name,addToCartUrl,largeImage,salePrice,preowned,url&page="+page+"&format=json&apiKey=API";
+			RootObject r = await o.GetData (uri);
+			List<ProductView> pl = o.ParseProducts (r);
+
+			await Navigation.PushAsync (new ProductsPage (pl));
 		}
 
 		public ProductsPage (List<ProductView> p)
@@ -31,6 +48,7 @@ namespace ProductBestBuy
 			Debug.WriteLine ("HI");
 			listView.ItemSelected += OnItemSelect;
 			next.Clicked += OnNextClick;
+			prev.Clicked += OnPrevClick;
 
 
 			// Create the ListView.
@@ -87,12 +105,23 @@ namespace ProductBestBuy
 				Orientation = StackOrientation.Horizontal
 			};
 
+			if (page == 1) {
+				totalPages = SearchPage.totalPages;
+			}
+
 			next.Text = "Next";
 			next.HorizontalOptions = LayoutOptions.EndAndExpand;
 
-			prev.Text = "Previous";
+			if (page == totalPages) {
+				next.IsVisible = false;
+			}
+
+			 prev.Text = "Previous";
 			prev.HorizontalOptions = LayoutOptions.Start;
 
+			if (page == 1) {
+				prev.IsVisible = false;
+			}
 
 			// Build the page.
 

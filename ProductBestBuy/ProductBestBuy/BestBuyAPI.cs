@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace ProductBestBuy
 {
-//	public class BestBuyAPI
+	public class BestBuyAPI
 	{
 		List<ProductView> ProductsView = new List<ProductView>();
 
